@@ -1,0 +1,53 @@
+{
+    "groups": [
+        {
+            "sourceType": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties",
+            "name": "sooner-jdbc",
+            "type": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties"
+        },
+        {
+            "sourceType": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties",
+            "name": "sooner-jdbc.configuration",
+            "sourceMethod": "getConfiguration()",
+            "type": "com.sooner.framework.jdbc.core.MybatisConfiguration"
+        },
+        {
+            "sourceType": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties",
+            "name": "sooner-jdbc.global-config",
+            "sourceMethod": "getGlobalConfig()",
+            "type": "com.sooner.framework.jdbc.core.config.GlobalConfig"
+        },
+        {
+            "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig$DbConfig",
+            "name": "sooner-jdbc.global-config.db-config",
+            "sourceMethod": "getDbConfig()",
+            "type": "com.sooner.framework.jdbc.core.config.GlobalConfig$DbConfig"
+        }
+    ],
+    "properties": [
+        {
+            "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig",
+            "name": "sooner-jdbc.global-config.meta-object-handler",
+            "deprecation": {
+                "level": "error",
+                "reason": "3.0开始废除此属性，请使用@Bean的方式注入至Spring容器."
+            }
+        },
+        {
+            "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig$DbConfig",
+            "name": "sooner-jdbc.global-config.db-config.key-generator",
+            "deprecation": {
+                "level": "error",
+                "reason": "3.0开始废除此属性，请使用@Bean的方式注入至Spring容器."
+            }
+        },
+        {
+            "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig",
+            "name": "sooner-jdbc.global-config.sql-injector",
+            "deprecation": {
+                "level": "error",
+                "reason": "3.0开始废除此属性，请使用@Bean的方式注入至Spring容器."
+            }
+        }
+    ]
+}
