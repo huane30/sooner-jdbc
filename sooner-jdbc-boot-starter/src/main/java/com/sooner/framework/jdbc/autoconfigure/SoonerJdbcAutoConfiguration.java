@@ -68,13 +68,13 @@ import com.sooner.framework.jdbc.extension.spring.MybatisSqlSessionFactoryBean;
 @org.springframework.context.annotation.Configuration
 @ConditionalOnClass({SqlSessionFactory.class, SqlSessionFactoryBean.class})
 @ConditionalOnSingleCandidate(DataSource.class)
-@EnableConfigurationProperties(MybatisPlusProperties.class)
+@EnableConfigurationProperties(SoonerJdbcProperties.class)
 @AutoConfigureAfter(DataSourceAutoConfiguration.class)
 public class SoonerJdbcAutoConfiguration {
 
     private static final Logger logger = LoggerFactory.getLogger(SoonerJdbcAutoConfiguration.class);
 
-    private final MybatisPlusProperties properties;
+    private final SoonerJdbcProperties properties;
 
     private final Interceptor[] interceptors;
 
@@ -86,7 +86,7 @@ public class SoonerJdbcAutoConfiguration {
 
     private final ApplicationContext applicationContext;
 
-    public SoonerJdbcAutoConfiguration(MybatisPlusProperties properties,
+    public SoonerJdbcAutoConfiguration(SoonerJdbcProperties properties,
                                        ObjectProvider<Interceptor[]> interceptorsProvider,
                                        ResourceLoader resourceLoader,
                                        ObjectProvider<DatabaseIdProvider> databaseIdProvider,

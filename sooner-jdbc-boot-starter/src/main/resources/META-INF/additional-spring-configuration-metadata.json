@@ -1,25 +1,25 @@
 {
     "groups": [
         {
-            "sourceType": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties",
+            "sourceType": "com.sooner.framework.jdbc.autoconfigure.SoonerJdbcProperties",
             "name": "sooner-jdbc",
-            "type": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties"
+            "type": "com.sooner.framework.jdbc.autoconfigure.SoonerJdbcProperties"
         },
         {
-            "sourceType": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties",
+            "sourceType": "com.sooner.framework.jdbc.autoconfigure.SoonerJdbcProperties",
             "name": "sooner-jdbc.configuration",
             "sourceMethod": "getConfiguration()",
             "type": "com.sooner.framework.jdbc.core.MybatisConfiguration"
         },
         {
-            "sourceType": "com.sooner.framework.jdbc.autoconfigure.MybatisPlusProperties",
-            "name": "sooner-jdbc.global-config",
+            "sourceType": "com.sooner.framework.jdbc.autoconfigure.SoonerJdbcProperties",
+            "name": "sooner-jdbc.globalConfig",
             "sourceMethod": "getGlobalConfig()",
             "type": "com.sooner.framework.jdbc.core.config.GlobalConfig"
         },
         {
             "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig$DbConfig",
-            "name": "sooner-jdbc.global-config.db-config",
+            "name": "sooner-jdbc.globalConfig.dbConfig",
             "sourceMethod": "getDbConfig()",
             "type": "com.sooner.framework.jdbc.core.config.GlobalConfig$DbConfig"
         }
@@ -27,7 +27,7 @@
     "properties": [
         {
             "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig",
-            "name": "sooner-jdbc.global-config.meta-object-handler",
+            "name": "sooner-jdbc.globalConfig.metaObjectHandler",
             "deprecation": {
                 "level": "error",
                 "reason": "3.0开始废除此属性，请使用@Bean的方式注入至Spring容器."
@@ -35,7 +35,7 @@
         },
         {
             "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig$DbConfig",
-            "name": "sooner-jdbc.global-config.db-config.key-generator",
+            "name": "sooner-jdbc.globalConfig.dbConfig.keyGenerator",
             "deprecation": {
                 "level": "error",
                 "reason": "3.0开始废除此属性，请使用@Bean的方式注入至Spring容器."
@@ -43,7 +43,7 @@
         },
         {
             "sourceType": "com.sooner.framework.jdbc.core.config.GlobalConfig",
-            "name": "sooner-jdbc.global-config.sql-injector",
+            "name": "sooner-jdbc.globalConfig.sqlInjector",
             "deprecation": {
                 "level": "error",
                 "reason": "3.0开始废除此属性，请使用@Bean的方式注入至Spring容器."
