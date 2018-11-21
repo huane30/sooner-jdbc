@@ -16,12 +16,9 @@
 package com.sooner.framework.jdbc.annotation;
 
 /**
- * <p>
- * 字段策略枚举类
- * </p>
- *
- * @author hubin
- * @since 2016-09-09
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 字段策略枚举类
  */
 public enum FieldStrategy {
     /**

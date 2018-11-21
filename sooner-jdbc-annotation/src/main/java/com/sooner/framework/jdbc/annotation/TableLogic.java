@@ -22,12 +22,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * 表字段逻辑处理注解（逻辑删除）
- * </p>
- *
- * @author hubin
- * @since 2017-09-09
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 表字段逻辑处理注解（逻辑删除)
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

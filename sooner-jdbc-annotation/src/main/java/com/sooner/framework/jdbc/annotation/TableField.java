@@ -23,12 +23,9 @@ import java.lang.annotation.Target;
 
 
 /**
- * <p>
- * 表字段标识
- * </p>
- *
- * @author hubin sjy tantan
- * @since 2016-09-09
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 表字段标识
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

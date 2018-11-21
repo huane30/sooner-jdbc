@@ -23,13 +23,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * 序列主键策略
- * oracle
- * </p>
- *
- * @author zashitou
- * @since 2017.4.20
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 序列主键策略
  */
 @Documented
 @Inherited

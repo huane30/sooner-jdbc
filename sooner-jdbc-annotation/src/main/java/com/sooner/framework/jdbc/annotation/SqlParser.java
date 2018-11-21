@@ -23,15 +23,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * 租户注解
- * </p>
- * <p>
- * 目前只支持注解在 mapper 的方法上
- * </p>
- *
- * @author hubin
- * @since 2018-01-13
+ * @Auther: Hoo
+ * @Date: 2018/11/21 
+ * @Description: 
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

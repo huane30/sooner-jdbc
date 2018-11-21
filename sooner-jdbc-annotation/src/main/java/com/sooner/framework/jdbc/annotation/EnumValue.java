@@ -22,15 +22,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * 支持普通枚举类字段, 只用在enum类的字段上<br>
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 支持普通枚举类字段, 只用在enum类的字段上<br>
  * 当实体类的属性是普通枚举，且是其中一个字段，使用该注解来标注枚举类里的那个属性对应字段<br>
- * </p>
- * <p>
- * </p>
- *
- * @author yuxiaobin
- * @date 2018/8/30
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

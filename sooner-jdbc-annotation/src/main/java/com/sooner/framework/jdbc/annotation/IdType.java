@@ -16,14 +16,10 @@
 package com.sooner.framework.jdbc.annotation;
 
 /**
- * <p>
- * 生成ID类型枚举类
- * </p>
- *
- * @author hubin
- * @since 2015-11-10
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 生成ID类型枚举类
  */
-
 public enum IdType {
     /**
      * 数据库ID自增

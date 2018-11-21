@@ -22,12 +22,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * <p>
- * 表主键标识
- * </p>
- *
- * @author hubin
- * @since 2016-01-23
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: 表主键标识
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

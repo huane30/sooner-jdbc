@@ -15,14 +15,10 @@
  */
 package com.sooner.framework.jdbc.annotation;
 
-
 /**
- * <p>
- * MybatisPlus 数据库类型
- * </p>
- *
- * @author hubin
- * @since 2018-06-23
+ * @Auther: Hoo
+ * @Date: 2018/11/21 
+ * @Description:
  */
 public enum DbType {
     /**

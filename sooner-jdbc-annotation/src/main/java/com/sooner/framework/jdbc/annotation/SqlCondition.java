@@ -16,12 +16,9 @@
 package com.sooner.framework.jdbc.annotation;
 
 /**
- * <p>
- * SQL 比较条件常量定义类
- * </p>
- *
- * @author hubin
- * @since 2018-01-05
+ * @Auther: Hoo
+ * @Date: 2018/11/21
+ * @Description: SQL 比较条件常量定义类
  */
 public class SqlCondition {
 
