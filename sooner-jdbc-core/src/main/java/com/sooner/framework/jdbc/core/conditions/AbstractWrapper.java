@@ -83,7 +83,7 @@ public abstract class AbstractWrapper<T, R, This extends AbstractWrapper<T, R, T
      * 占位符
      */
     private static final String PLACE_HOLDER = "{%s}";
-    private static final String MYBATIS_PLUS_TOKEN = "#{%s.paramNameValuePairs.%s}";
+    private static final String SOONER_JDBC_TOKEN = "#{%s.paramNameValuePairs.%s}";
     protected final This typedThis = (This) this;
     /**
      * 必要度量
@@ -396,7 +396,7 @@ public abstract class AbstractWrapper<T, R, This extends AbstractWrapper<T, R, T
             for (int i = 0; i < params.length; ++i) {
                 String genParamName = MP_GENERAL_PARAMNAME + paramNameSeq.incrementAndGet();
                 sqlStr = sqlStr.replace(String.format(PLACE_HOLDER, i),
-                    String.format(MYBATIS_PLUS_TOKEN, getParamAlias(), genParamName));
+                    String.format(SOONER_JDBC_TOKEN, getParamAlias(), genParamName));
                 paramNameValuePairs.put(genParamName, params[i]);
             }
         }

@@ -28,7 +28,7 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
-import com.sooner.framework.jdbc.core.exceptions.MybatisPlusException;
+import com.sooner.framework.jdbc.core.exceptions.SoonerJdbcException;
 import com.sooner.framework.jdbc.core.toolkit.EncryptUtils;
 import com.sooner.framework.jdbc.core.toolkit.PluginUtils;
 import com.sooner.framework.jdbc.core.toolkit.StringUtils;
@@ -100,28 +100,28 @@ public class IllegalSQLInterceptor implements Interceptor {
         //where条件使用了 or 关键字
         if (expression instanceof OrExpression) {
             OrExpression orExpression = (OrExpression) expression;
-            throw new MybatisPlusException("非法SQL，where条件中不能使用【or】关键字，错误or信息：" + orExpression.toString());
+            throw new SoonerJdbcException("非法SQL，where条件中不能使用【or】关键字，错误or信息：" + orExpression.toString());
         } else if (expression instanceof NotEqualsTo) {
             NotEqualsTo notEqualsTo = (NotEqualsTo) expression;
-            throw new MybatisPlusException("非法SQL，where条件中不能使用【!=】关键字，错误!=信息：" + notEqualsTo.toString());
+            throw new SoonerJdbcException("非法SQL，where条件中不能使用【!=】关键字，错误!=信息：" + notEqualsTo.toString());
         } else if (expression instanceof BinaryExpression) {
             BinaryExpression binaryExpression = (BinaryExpression) expression;
             if (binaryExpression.isNot()) {
-                throw new MybatisPlusException("非法SQL，where条件中不能使用【not】关键字，错误not信息：" + binaryExpression.toString());
+                throw new SoonerJdbcException("非法SQL，where条件中不能使用【not】关键字，错误not信息：" + binaryExpression.toString());
             }
             if (binaryExpression.getLeftExpression() instanceof Function) {
                 Function function = (Function) binaryExpression.getLeftExpression();
-                throw new MybatisPlusException("非法SQL，where条件中不能使用数据库函数，错误函数信息：" + function.toString());
+                throw new SoonerJdbcException("非法SQL，where条件中不能使用数据库函数，错误函数信息：" + function.toString());
             }
             if (binaryExpression.getRightExpression() instanceof SubSelect) {
                 SubSelect subSelect = (SubSelect) binaryExpression.getRightExpression();
-                throw new MybatisPlusException("非法SQL，where条件中不能使用子查询，错误子查询SQL信息：" + subSelect.toString());
+                throw new SoonerJdbcException("非法SQL，where条件中不能使用子查询，错误子查询SQL信息：" + subSelect.toString());
             }
         } else if (expression instanceof InExpression) {
             InExpression inExpression = (InExpression) expression;
             if (inExpression.getRightItemsList() instanceof SubSelect) {
                 SubSelect subSelect = (SubSelect) inExpression.getRightItemsList();
-                throw new MybatisPlusException("非法SQL，where条件中不能使用子查询，错误子查询SQL信息：" + subSelect.toString());
+                throw new SoonerJdbcException("非法SQL，where条件中不能使用子查询，错误子查询SQL信息：" + subSelect.toString());
             }
         }
 
@@ -175,7 +175,7 @@ public class IllegalSQLInterceptor implements Interceptor {
             }
         }
         if (!useIndexFlag) {
-            throw new MybatisPlusException("非法SQL，SQL未使用到索引, table:" + table + ", columnName:" + columnName);
+            throw new SoonerJdbcException("非法SQL，SQL未使用到索引, table:" + table + ", columnName:" + columnName);
         }
     }
 
@@ -324,7 +324,7 @@ public class IllegalSQLInterceptor implements Interceptor {
         }
         //where条件不能为空
         if (where == null) {
-            throw new MybatisPlusException("非法SQL，必须要有where条件");
+            throw new SoonerJdbcException("非法SQL，必须要有where条件");
         }
         validWhere(where, table, connection);
         validJoins(joins, table, connection);

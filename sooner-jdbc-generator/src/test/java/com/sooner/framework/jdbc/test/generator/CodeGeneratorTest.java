@@ -26,7 +26,7 @@ public class CodeGeneratorTest {
     private final static String MYSQL_USERNAME = "root";
     private final static String MYSQL_PASSWORD = "@Hoo888888";
     private final static String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
-    private final static String MYSQL_TABLE_NAME = "event_store";
+    private final static String MYSQL_TABLE_NAME = "transaction";
 
     // ============================= 包名称  ================================ //
     private final static String PACKAGE_ENTITY = "entity";

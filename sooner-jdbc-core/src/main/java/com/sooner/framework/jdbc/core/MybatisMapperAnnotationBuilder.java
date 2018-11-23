@@ -38,6 +38,7 @@ import com.sooner.framework.jdbc.core.mapper.BaseMapper;
 import com.sooner.framework.jdbc.core.override.PageMapperMethod;
 import com.sooner.framework.jdbc.core.toolkit.GlobalConfigUtils;
 import com.sooner.framework.jdbc.core.toolkit.StringPool;
+import com.sooner.framework.jdbc.core.toolkit.JsonUtils;
 import org.apache.ibatis.annotations.Arg;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.CacheNamespaceRef;
@@ -76,6 +77,8 @@ import org.apache.ibatis.executor.keygen.KeyGenerator;
 import org.apache.ibatis.executor.keygen.NoKeyGenerator;
 import org.apache.ibatis.executor.keygen.SelectKeyGenerator;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.mapping.Discriminator;
 import org.apache.ibatis.mapping.FetchType;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -105,6 +108,7 @@ import org.apache.ibatis.type.UnknownTypeHandler;
  * @since 2017-01-04
  */
 public class MybatisMapperAnnotationBuilder extends MapperAnnotationBuilder {
+    private static final Log logger = LogFactory.getLog(MybatisMapperAnnotationBuilder.class);
 
     private final Set<Class<? extends Annotation>> sqlAnnotationTypes = new HashSet<>();
     private final Set<Class<? extends Annotation>> sqlProviderAnnotationTypes = new HashSet<>();
@@ -143,6 +147,7 @@ public class MybatisMapperAnnotationBuilder extends MapperAnnotationBuilder {
             parseCache();
             parseCacheRef();
             Method[] methods = type.getMethods();
+
             // TODO 注入 CURD 动态 SQL (应该在注解之前注入)
             if (BaseMapper.class.isAssignableFrom(type)) {
                 GlobalConfigUtils.getSqlInjector(configuration).inspectInject(assistant, type);

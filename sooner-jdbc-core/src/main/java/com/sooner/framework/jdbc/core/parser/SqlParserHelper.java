@@ -40,7 +40,6 @@ public class SqlParserHelper {
      */
     private static final Map<String, Boolean> SQL_PARSER_INFO_CACHE = new ConcurrentHashMap<>();
 
-
     /**
      * <p>
      * 初始化缓存 SqlParser 注解信息
@@ -70,7 +69,6 @@ public class SqlParserHelper {
     public static boolean getSqlParserInfo(MetaObject metaObject) {
         return SQL_PARSER_INFO_CACHE.getOrDefault(getMappedStatement(metaObject).getId(), false);
     }
-
 
     /**
      * <p>

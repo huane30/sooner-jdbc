@@ -68,7 +68,7 @@ public class JdbcUtils {
         } else if (jdbcUrl.startsWith("jdbc:dm:") || jdbcUrl.startsWith("jdbc:log4jdbc:dm:")) {
             return DbType.DM;
         } else {
-            logger.warn("The jdbcUrl is " + jdbcUrl + ", Mybatis Plus Cannot Read Database type or The Database's Not Supported!");
+            logger.warn("The jdbcUrl is " + jdbcUrl + ", Sooner jdbc Cannot Read Database type or The Database's Not Supported!");
             return DbType.OTHER;
         }
     }

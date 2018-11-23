@@ -72,8 +72,8 @@ public class MysqlGenerator extends GeneratorTest {
             });
             setDriverName("com.mysql.jdbc.Driver");
             setUsername("root");
-            setPassword("123456");
-            setUrl("jdbc:mysql://127.0.0.1:3306/sooner?characterEncoding=utf8");
+            setPassword("@Hoo888888");
+            setUrl("jdbc:mysql://193.112.71.232:3306/sooner?characterEncoding=utf8");
         }};
 
         StrategyConfig strategyConfig = new StrategyConfig(){{

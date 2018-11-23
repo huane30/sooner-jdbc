@@ -115,7 +115,7 @@ public class GlobalConfigUtils {
         GlobalConfig cache = GLOBAL_CONFIG.get(configMark);
         if (cache == null) {
             // 没有获取全局配置初始全局配置
-            logger.debug("DeBug: MyBatis Plus Global configuration Initializing !");
+            logger.debug("DeBug: Sooner Jdbc Global configuration Initializing !");
             GlobalConfig globalConfig = defaults();
             GLOBAL_CONFIG.put(configMark, globalConfig);
             return globalConfig;

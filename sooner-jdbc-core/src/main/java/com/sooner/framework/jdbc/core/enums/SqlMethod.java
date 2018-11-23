@@ -17,7 +17,7 @@ package com.sooner.framework.jdbc.core.enums;
 
 /**
  * <p>
- * MybatisPlus 支持 SQL 方法
+ * SoonerJdbc 支持 SQL 方法
  * </p>
  *
  * @author hubin

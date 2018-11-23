@@ -18,7 +18,7 @@ package com.sooner.framework.jdbc.core.toolkit;
 
 /**
  * <p>
- * mybatis_plus 自用常量集中管理
+ * sooner jdbc 自用常量集中管理
  * </p>
  *
  * @author miemie

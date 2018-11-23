@@ -15,7 +15,7 @@
  */
 package com.sooner.framework.jdbc.core.toolkit;
 
-import com.sooner.framework.jdbc.core.exceptions.MybatisPlusException;
+import com.sooner.framework.jdbc.core.exceptions.SoonerJdbcException;
 
 /**
  * <p>
@@ -37,8 +37,8 @@ public final class ExceptionUtils {
      * @param t   异常信息
      * @return 返回异常
      */
-    public static MybatisPlusException mpe(String msg, Throwable t) {
-        return new MybatisPlusException(msg, t);
+    public static SoonerJdbcException mpe(String msg, Throwable t) {
+        return new SoonerJdbcException(msg, t);
     }
 
     /**
@@ -47,8 +47,8 @@ public final class ExceptionUtils {
      * @param msg 消息
      * @return 返回异常
      */
-    public static MybatisPlusException mpe(String msg) {
-        return new MybatisPlusException(msg);
+    public static SoonerJdbcException mpe(String msg) {
+        return new SoonerJdbcException(msg);
     }
 
     /**
@@ -57,8 +57,8 @@ public final class ExceptionUtils {
      * @param t 异常
      * @return 返回异常
      */
-    public static MybatisPlusException mpe(Throwable t) {
-        return new MybatisPlusException(t);
+    public static SoonerJdbcException mpe(Throwable t) {
+        return new SoonerJdbcException(t);
     }
 
 }

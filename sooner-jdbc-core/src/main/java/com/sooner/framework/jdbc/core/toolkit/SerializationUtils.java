@@ -16,7 +16,7 @@
  */
 package com.sooner.framework.jdbc.core.toolkit;
 
-import com.sooner.framework.jdbc.core.exceptions.MybatisPlusException;
+import com.sooner.framework.jdbc.core.exceptions.SoonerJdbcException;
 
 import java.io.*;
 import java.util.HashMap;
@@ -71,7 +71,7 @@ public class SerializationUtils {
      * @param <T>    the type of the object involved
      * @param object the {@code Serializable} object to clone
      * @return the cloned object
-     * @throws MybatisPlusException (runtime) if the serialization fails
+     * @throws SoonerJdbcException (runtime) if the serialization fails
      */
     public static <T extends Serializable> T clone(final T object) {
         if (object == null) {
@@ -128,7 +128,7 @@ public class SerializationUtils {
      * @param obj          the object to serialize to bytes, may be null
      * @param outputStream the stream to write to, must not be null
      * @throws IllegalArgumentException if {@code outputStream} is {@code null}
-     * @throws MybatisPlusException     (runtime) if the serialization fails
+     * @throws SoonerJdbcException     (runtime) if the serialization fails
      */
     public static void serialize(final Serializable obj, final OutputStream outputStream) {
         isTrue(outputStream != null, "The OutputStream must not be null");
@@ -145,7 +145,7 @@ public class SerializationUtils {
      *
      * @param obj the object to serialize to bytes
      * @return a byte[] with the converted Serializable
-     * @throws MybatisPlusException (runtime) if the serialization fails
+     * @throws SoonerJdbcException (runtime) if the serialization fails
      */
     public static byte[] serialize(final Serializable obj) {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream(512);
@@ -181,7 +181,7 @@ public class SerializationUtils {
      * @param inputStream the serialized object input stream, must not be null
      * @return the deserialized object
      * @throws IllegalArgumentException if {@code inputStream} is {@code null}
-     * @throws MybatisPlusException     (runtime) if the serialization fails
+     * @throws SoonerJdbcException     (runtime) if the serialization fails
      */
     public static <T> T deserialize(final InputStream inputStream) {
         isTrue(inputStream != null, "The InputStream must not be null");
@@ -208,7 +208,7 @@ public class SerializationUtils {
      * @param objectData the serialized object, must not be null
      * @return the deserialized object
      * @throws IllegalArgumentException if {@code objectData} is {@code null}
-     * @throws MybatisPlusException     (runtime) if the serialization fails
+     * @throws SoonerJdbcException     (runtime) if the serialization fails
      */
     public static <T> T deserialize(final byte[] objectData) {
         isTrue(objectData != null, "The byte[] must not be null");

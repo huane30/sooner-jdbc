@@ -62,7 +62,7 @@ public abstract class AbstractMethod {
             /**
              * 注入自定义方法
              */
-            TableInfo tableInfo = TableInfoHelper.initTableInfo(builderAssistant, modelClass);
+            TableInfo tableInfo = TableInfoHelper.initTableInfo(builderAssistant, modelClass,configuration);
             injectMappedStatement(mapperClass, modelClass, tableInfo);
         }
     }

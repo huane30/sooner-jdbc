@@ -31,6 +31,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.mapping.SqlSource;
 import org.apache.ibatis.mapping.StatementType;
+import org.apache.ibatis.parsing.XNode;
 import org.apache.ibatis.scripting.LanguageDriver;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -127,6 +128,7 @@ public class TableInfoHelper {
         return new ArrayList<>(TABLE_INFO_CACHE.values());
     }
 
+
     /**
      * <p>
      * 实体类反射获取表信息【初始化】
@@ -136,6 +138,18 @@ public class TableInfoHelper {
      * @return 数据库表反射信息
      */
     public synchronized static TableInfo initTableInfo(MapperBuilderAssistant builderAssistant, Class<?> clazz) {
+        return initTableInfo(builderAssistant,clazz,null);
+    }
+
+    /**
+     * <p>
+     * 实体类反射获取表信息【初始化】
+     * <p>
+     *
+     * @param clazz 反射实体类
+     * @return 数据库表反射信息
+     */
+    public synchronized static TableInfo initTableInfo(MapperBuilderAssistant builderAssistant, Class<?> clazz,Configuration configuration) {
         TableInfo tableInfo = TABLE_INFO_CACHE.get(clazz.getName());
         if (tableInfo != null) {
             if (tableInfo.getConfigMark() == null && builderAssistant != null) {
@@ -158,7 +172,11 @@ public class TableInfoHelper {
         }
 
         /* 初始化表名相关 */
-        initTableName(clazz, globalConfig, tableInfo);
+        if(configuration == null) {
+            initTableName(clazz, globalConfig, tableInfo);
+        }else{
+            initTableNameByConfig(clazz, globalConfig, tableInfo,configuration);
+        }
 
         /* 初始化字段相关 */
         initTableFields(clazz, globalConfig, tableInfo);
@@ -170,6 +188,47 @@ public class TableInfoHelper {
         LambdaUtils.createCache(clazz, tableInfo);
         return tableInfo;
     }
+
+    /**
+     * <p>
+     * 初始化 表数据库类型,表名,resultMap
+     * </p>
+     *
+     * @param clazz        实体类
+     * @param globalConfig 全局配置
+     * @param tableInfo    数据库表反射信息
+     */
+    public static void initTableNameByConfig(Class<?> clazz, GlobalConfig globalConfig, TableInfo tableInfo,Configuration configuration) {
+        /* 数据库全局配置 */
+        GlobalConfig.DbConfig dbConfig = globalConfig.getDbConfig();
+        /* 设置数据库类型 */
+        tableInfo.setDbType(dbConfig.getDbType());
+
+        /* 设置表名 */
+        TableName table = clazz.getAnnotation(TableName.class);
+        String tableName = clazz.getSimpleName();
+        if (table != null && StringUtils.isNotEmpty(table.value())) {
+            tableName = table.value();
+        } else {
+            Map<String,XNode> sqlFragments = configuration.getSqlFragments();
+            String baseTable = tableInfo.getCurrentNamespace()+"。BaseTable";
+            tableName = sqlFragments.get(baseTable).getStringBody();
+            tableName = tableName.replaceAll("\n","").replace(" ","");
+            logger.debug("<==测试使用==>"+clazz.getName()+":"+tableName);
+        }
+        tableInfo.setTableName(tableName);
+
+        /* 表结果集映射 */
+        if (table != null && StringUtils.isNotEmpty(table.resultMap())) {
+            tableInfo.setResultMap(table.resultMap());
+        }
+
+        /* 开启了自定义 KEY 生成器 */
+        if (null != dbConfig.getKeyGenerator()) {
+            tableInfo.setKeySequence(clazz.getAnnotation(KeySequence.class));
+        }
+    }
+
 
     /**
      * <p>

@@ -52,7 +52,7 @@ public class MybatisMapperRegistry extends MapperRegistry {
     public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
         final PageMapperProxyFactory<T> mapperProxyFactory = (PageMapperProxyFactory<T>) knownMappers.get(type);
         if (mapperProxyFactory == null) {
-            throw new BindingException("Type " + type + " is not known to the MybatisPlusMapperRegistry.");
+            throw new BindingException("Type " + type + " is not known to the MybatisMapperRegistry.");
         }
         try {
             return mapperProxyFactory.newInstance(sqlSession);
@@ -73,7 +73,7 @@ public class MybatisMapperRegistry extends MapperRegistry {
                 // TODO 如果之前注入 直接返回
                 return;
                 // throw new BindingException("Type " + type +
-                // " is already known to the MybatisPlusMapperRegistry.");
+                // " is already known to the MybatisMapperRegistry.");
             }
             boolean loadCompleted = false;
             try {
